@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.blogpessoal.model.Usuario;
 
-
 public class UserDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -22,7 +21,8 @@ public class UserDetailsImpl implements UserDetails {
 		this.password = user.getSenha();
 	}
 
-	public UserDetailsImpl() {	}
+	public UserDetailsImpl() {
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

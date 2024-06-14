@@ -15,33 +15,29 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity// classe vai se tornar uma entidade no banco de dados(tabelas)
-@Table(name="tb_postagens")//nomeando a tabela no banco de dados de tb_postagens
+@Entity
+@Table(name = "tb_postagens")
 public class Postagem {
-	
-	
-	@Id // tornando o campo uma chave primária no banco de dados
-	@GeneratedValue(strategy = GenerationType.IDENTITY)// tornando a chave primária auto-increment
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
-	@NotBlank(message ="O atributo título é obrigatório!")// validation - validar nosso atributo NN e também não vazio
-	@Size(min = 5, max = 100, message="O atributo TITULO deve ter no mínimo 5 caracteres e no máximo 100 caracteres.")
-    private String titulo;
-	
-	
-	@NotBlank (message ="O atributo TEXTO é obrigatório!")
-	@Size(min = 10, max = 1000,  message = "O atributo TEXTO deve ter no mínimo 10 caracteres e no máximo 1000 caracteres")
+
+	@NotBlank(message = "O atributo título é obrigatório!") // validation - validar nosso atributo NN e também não vazio
+	@Size(min = 5, max = 100, message = "O atributo TITULO deve ter no mínimo 5 caracteres e no máximo 100 caracteres.")
+	private String titulo;
+
+	@NotBlank(message = "O atributo TEXTO é obrigatório!")
+	@Size(min = 10, max = 1000, message = "O atributo TEXTO deve ter no mínimo 10 caracteres e no máximo 1000 caracteres")
 	private String texto;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime data;
-	
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("Postagem")
 	private Tema tema;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
@@ -85,4 +81,13 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }

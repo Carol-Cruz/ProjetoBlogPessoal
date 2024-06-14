@@ -30,7 +30,6 @@ public class TemaController {
 
 	@Autowired
 	private TemaRepository temaRepository;
-	
 
 	@GetMapping
 	public ResponseEntity<List<Tema>> getAll() {
@@ -47,7 +46,6 @@ public class TemaController {
 	public ResponseEntity<List<Tema>> getByTitle(@PathVariable String descricao) {
 		return ResponseEntity.ok(temaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
-		
 
 	@PostMapping
 	public ResponseEntity<Tema> post(@Valid @RequestBody Tema tema) {
